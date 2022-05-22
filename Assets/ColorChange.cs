@@ -7,7 +7,8 @@ public class ColorChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.GetComponent<SpriteRenderer>().color = Color.red;
+            transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().countryColor;
+        // transform.position = new Vector3(2, 2, 0);
     }
 
     // Update is called once per frame

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Country : MonoBehaviour
 {
-    public Color countryColor;
+    public Color32 countryColor;
 
 
     // Start is called before the first frame update
