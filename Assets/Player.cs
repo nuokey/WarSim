@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Country : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public Color32 countryColor;
-    public Color32 divisionColor;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,4 +15,6 @@ public class Country : MonoBehaviour
     {
         
     }
+
+    
 }
