@@ -29,6 +29,13 @@ public class Division : MonoBehaviour
         transform.position = transform.position + new Vector3(cosin * speed, sin * speed, 0);
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.GetComponent<Territory>())
+        {
+            collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<Country>().countryColor;
+        }
+    }
     // void OnMouseEnter()
     // {
     //    transform.position = new Vector3(0, 0, 0);
