@@ -33,7 +33,9 @@ public class Division : MonoBehaviour
     {
         if (collision.transform.GetComponent<Territory>())
         {
-            collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<Country>().countryColor;
+            collision.transform.SetParent(transform.parent);
+
+            // collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<Country>().countryColor;
         }
     }
     // void OnMouseEnter()
