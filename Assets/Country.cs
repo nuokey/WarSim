@@ -6,6 +6,7 @@ public class Country : MonoBehaviour
 {
     public Color32 countryColor;
     public Color32 divisionColor;
+    public bool isPlayed;
 
 
     // Start is called before the first frame update
