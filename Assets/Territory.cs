@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Territory : MonoBehaviour
-{   
-
-    void changeColor()
-    {
-
-    }
+{
+    public bool capital = false;
+    public bool isDefenced;
 
     void Start()
     {
@@ -17,8 +14,19 @@ public class Territory : MonoBehaviour
 
     void Update()
     {
-
+        isDefenced = false;
+    }
+    private void FixedUpdate()
+    {
+        isDefenced = false;
     }
 
-    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.transform.parent == transform.parent)
+        {
+            isDefenced = true;
+        }
+
+    }
 }
