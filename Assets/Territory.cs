@@ -7,6 +7,10 @@ public class Territory : MonoBehaviour
     public bool capital = false;
     public bool isDefenced;
 
+    public Color mouseOverColor;
+
+    public GameObject mouseOverObject;
+
     void Start()
     {
         transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().countryColor;
@@ -28,5 +32,15 @@ public class Territory : MonoBehaviour
             isDefenced = true;
         }
 
+    }
+
+    private void OnMouseEnter()
+    {
+        mouseOverObject.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        mouseOverObject.SetActive(false);
     }
 }

@@ -16,6 +16,8 @@ public class Division : MonoBehaviour
 
     public LineRenderer line;
 
+    public bool fighting;
+
     void Start()
     {
         descriptionPanel = GameObject.Find("Division Description");
@@ -79,11 +81,13 @@ public class Division : MonoBehaviour
             {
                 isChosen = true;
                 gameObject.GetComponent<SpriteRenderer>().color = chosenColor;
+                descriptionPanel.SetActive(true);
             }
             else
             {
                 isChosen = false;
                 transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().divisionColor;
+                descriptionPanel.SetActive(false);
             }
         }
      }
