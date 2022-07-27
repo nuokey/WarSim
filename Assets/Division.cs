@@ -13,15 +13,22 @@ public class Division : MonoBehaviour
 
     public new string name = "Division";
     public Color chosenColor;
+    public Color defaultColor;
 
     public LineRenderer line;
 
     public bool fighting;
 
+    public Transform fightTarget;
+
+    public float condition;
+    public float damage;
+    public float damageCoolDown;
+
     void Start()
     {
         descriptionPanel = GameObject.Find("Division Description");
-        transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().divisionColor;
+        transform.GetComponent<SpriteRenderer>().sprite = transform.parent.transform.GetComponent<Country>().countryFlag;
     }
 
     void Update()
@@ -32,7 +39,7 @@ public class Division : MonoBehaviour
             {
                 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 targetIsChoosing = false;
-                transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().divisionColor;
+                transform.GetComponent<SpriteRenderer>().color = defaultColor;
             }
         }
         if (isChosen)
@@ -59,17 +66,41 @@ public class Division : MonoBehaviour
     {
         if (collision.transform.GetComponent<Territory>())
         {   
-            if (!collision.transform.GetComponent<Territory>().isDefenced)
+            if (collision.transform.GetComponent<Territory>().defendingDivisionsCount == 0)
             {
                 collision.transform.SetParent(transform.parent);
 
                 
                 collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<Country>().countryColor;
+                collision.transform.GetComponent<Territory>().defendingDivisionsCount = collision.transform.GetComponent<Territory>().attackingDivisionsCount;
+                collision.transform.GetComponent<Territory>().attackingDivisionsCount = 0;
             }       
         }
     }
-     void OnMouseOver()
-     {
+
+    void Attack() {
+        if (fighting) {
+            fightTarget.GetComponent<Division>().condition -= transform.GetComponent<Division>().damage;
+            Invoke("Attack", transform.GetComponent<Division>().damageCoolDown);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.transform.GetComponent<Division>() & collision.transform.parent != transform.parent & !fighting) {
+            fightTarget = collision.transform;
+            fighting = true;
+            Attack();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision) {
+        if (collision.transform == fightTarget) {
+            fighting = false;
+        }
+    }
+
+    void OnMouseOver()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             targetIsChoosing = true;
@@ -86,9 +117,9 @@ public class Division : MonoBehaviour
             else
             {
                 isChosen = false;
-                transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().divisionColor;
+                transform.GetComponent<SpriteRenderer>().sprite = transform.parent.transform.GetComponent<Country>().countryFlag;
                 descriptionPanel.SetActive(false);
             }
         }
-     }
+    }
 }
