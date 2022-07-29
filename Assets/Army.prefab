@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6550410468152838442}
   - component: {fileID: -6290177551651515505}
   m_Layer: 0
-  m_Name: Division
+  m_Name: Army
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   targetIsChoosing: 0
   isChosen: 0
   descriptionPanel: {fileID: 0}
-  name: Division
+  name: Army
   chosenColor: {r: 0, g: 1, b: 0, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   line: {fileID: 0}

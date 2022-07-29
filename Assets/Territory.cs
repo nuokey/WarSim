@@ -5,8 +5,8 @@ using UnityEngine;
 public class Territory : MonoBehaviour
 {
     public bool capital = false;
-    public int defendingDivisionsCount = 0;
-    public int attackingDivisionsCount = 0;
+    public int defendingArmiesCount = 0;
+    public int attackingArmiesCount = 0;
 
     public Color mouseOverColor;
 
@@ -22,10 +22,10 @@ public class Territory : MonoBehaviour
     {
         if (collision.transform.parent == transform.parent)
         {
-            defendingDivisionsCount += 1;
+            defendingArmiesCount += 1;
         }
-        if (collision.transform.parent != transform.parent & collision.transform.GetComponent<Division>()) {
-            attackingDivisionsCount += 1;
+        if (collision.transform.parent != transform.parent & collision.transform.GetComponent<Army>()) {
+            attackingArmiesCount += 1;
         }
     }
 
@@ -33,10 +33,10 @@ public class Territory : MonoBehaviour
     {
         if (collision.transform.parent == transform.parent)
         {
-            defendingDivisionsCount -= 1;
+            defendingArmiesCount -= 1;
         }
-        if (collision.transform.parent != transform.parent & collision.transform.GetComponent<Division>()) {
-            attackingDivisionsCount += 1;
+        if (collision.transform.parent != transform.parent & collision.transform.GetComponent<Army>()) {
+            attackingArmiesCount += 1;
         }
     }
 

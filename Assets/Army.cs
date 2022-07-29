@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Division : MonoBehaviour
+public class Army : MonoBehaviour
 {
     public Vector3 target;
     public float speed;
@@ -11,7 +10,7 @@ public class Division : MonoBehaviour
     public bool isChosen = false;
     public GameObject descriptionPanel;
 
-    public new string name = "Division";
+    public new string name = "Army";
     public Color chosenColor;
     public Color defaultColor;
 
@@ -21,13 +20,13 @@ public class Division : MonoBehaviour
 
     public Transform fightTarget;
 
-    public float condition;
+    public float durability;
     public float damage;
     public float damageCoolDown;
 
     void Start()
     {
-        descriptionPanel = GameObject.Find("Division Description");
+        descriptionPanel = GameObject.Find("Army Description");
         transform.GetComponent<SpriteRenderer>().sprite = transform.parent.transform.GetComponent<Country>().countryFlag;
     }
 
@@ -41,10 +40,6 @@ public class Division : MonoBehaviour
                 targetIsChoosing = false;
                 transform.GetComponent<SpriteRenderer>().color = defaultColor;
             }
-        }
-        if (isChosen)
-        { 
-            descriptionPanel.transform.GetChild(0).GetComponent<Text>().text = name;
         }
     }
 
@@ -66,27 +61,27 @@ public class Division : MonoBehaviour
     {
         if (collision.transform.GetComponent<Territory>())
         {   
-            if (collision.transform.GetComponent<Territory>().defendingDivisionsCount == 0)
+            if (collision.transform.GetComponent<Territory>().defendingArmiesCount == 0)
             {
                 collision.transform.SetParent(transform.parent);
 
                 
                 collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<Country>().countryColor;
-                collision.transform.GetComponent<Territory>().defendingDivisionsCount = collision.transform.GetComponent<Territory>().attackingDivisionsCount;
-                collision.transform.GetComponent<Territory>().attackingDivisionsCount = 0;
+                collision.transform.GetComponent<Territory>().defendingArmiesCount = collision.transform.GetComponent<Territory>().attackingArmiesCount;
+                collision.transform.GetComponent<Territory>().attackingArmiesCount = 0;
             }       
         }
     }
 
     void Attack() {
         if (fighting) {
-            fightTarget.GetComponent<Division>().condition -= transform.GetComponent<Division>().damage;
-            Invoke("Attack", transform.GetComponent<Division>().damageCoolDown);
+            fightTarget.GetComponent<Army>().durability -= transform.GetComponent<Army>().damage;
+            Invoke("Attack", transform.GetComponent<Army>().damageCoolDown);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.transform.GetComponent<Division>() & collision.transform.parent != transform.parent & !fighting) {
+        if (collision.transform.GetComponent<Army>() & collision.transform.parent != transform.parent & !fighting) {
             fightTarget = collision.transform;
             fighting = true;
             Attack();
@@ -108,17 +103,19 @@ public class Division : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {   
-            if (!isChosen)
+            if (!isChosen & !descriptionPanel.GetComponent<ArmyDescription>().armyIsChosen)
             {
                 isChosen = true;
                 gameObject.GetComponent<SpriteRenderer>().color = chosenColor;
                 descriptionPanel.SetActive(true);
+                descriptionPanel.GetComponent<ArmyDescription>().chosenArmy = gameObject;
+                descriptionPanel.GetComponent<ArmyDescription>().showDescription();
             }
             else
             {
                 isChosen = false;
-                transform.GetComponent<SpriteRenderer>().sprite = transform.parent.transform.GetComponent<Country>().countryFlag;
-                descriptionPanel.SetActive(false);
+                transform.GetComponent<SpriteRenderer>().color = defaultColor;
+                descriptionPanel.GetComponent<ArmyDescription>().hideDescription();
             }
         }
     }
