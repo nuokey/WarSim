@@ -1,28 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Army : MonoBehaviour
-{
-    public Vector3 target;
+{   
+    public new string name = "Army";
+    public float durability;
+    public float damage;
+    public float damageCoolDown;
     public float speed;
+
+    public Vector3 target;
+    
     public bool targetIsChoosing = false;
     public bool isChosen = false;
     public GameObject descriptionPanel;
 
-    public new string name = "Army";
+    
     public Color chosenColor;
     public Color defaultColor;
-
-    public LineRenderer line;
 
     public bool fighting;
 
     public Transform fightTarget;
-
-    public float durability;
-    public float damage;
-    public float damageCoolDown;
 
     void Start()
     {
@@ -40,6 +41,10 @@ public class Army : MonoBehaviour
                 targetIsChoosing = false;
                 transform.GetComponent<SpriteRenderer>().color = defaultColor;
             }
+        }
+
+        if (durability <= 0) {
+            Destroy(gameObject);
         }
     }
 

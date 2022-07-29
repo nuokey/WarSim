@@ -8,6 +8,8 @@ public class ArmyDescription : MonoBehaviour
     public GameObject chosenArmy;
     public bool armyIsChosen = false;
 
+    public string durability;
+
     void Start() {
         Invoke("hideDescription", 0.001f);
     }
@@ -18,10 +20,11 @@ public class ArmyDescription : MonoBehaviour
         transform.GetChild(3).GetComponent<Text>().text = "Attack speed: " + System.Convert.ToString(1 / chosenArmy.GetComponent<Army>().damageCoolDown);
     }
 
-    void Update() {
+    public void Update() {
         if (armyIsChosen) {
             updateDescription();
         }
+        
     }
 
     public void showDescription() {
