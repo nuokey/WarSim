@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountryDescription : MonoBehaviour
+public class PlayerCountryPanel : MonoBehaviour
 {   
     public GameObject playerCountry;
 
-    void flagShow() {
+    void afterStart() {
         transform.GetChild(0).GetComponent<Image>().sprite = playerCountry.GetComponent<Country>().countryFlag;
     }
 
     void Start() {
-        Invoke("flagShow", 0.001f);
+        Invoke("afterStart", 0.001f);
     }
     
     void Update() {

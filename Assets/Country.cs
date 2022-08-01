@@ -8,12 +8,16 @@ public class Country : MonoBehaviour
     public Sprite countryFlag;
     public bool isPlayed;
 
-    public GameObject countryDescription;
+    public GameObject playerCountryPanel;
+    public GameObject aboutPlayerCountry;
 
     void Start() {
         if (isPlayed) {
-            countryDescription = GameObject.Find("Country Description");
-            countryDescription.GetComponent<CountryDescription>().playerCountry = gameObject;
+            playerCountryPanel = GameObject.Find("Player Country Panel");
+            playerCountryPanel.GetComponent<PlayerCountryPanel>().playerCountry = gameObject;
+
+            aboutPlayerCountry = GameObject.Find("About");
+            aboutPlayerCountry.GetComponent<AboutPlayerCountry>().country = gameObject;
         }
     }
 }
