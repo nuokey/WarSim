@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 388170317}
   - component: {fileID: 388170319}
   m_Layer: 5
-  m_Name: Player Country Menu
+  m_Name: Player Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 388170314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188a664f60e03be47ad79bab06bb6c2a, type: 3}
+  m_Script: {fileID: 11500000, guid: d82437b6389afcae1b130479ee8cfbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &472359757 stripped
@@ -4361,9 +4361,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422780267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff0f5547fc1591e197a453cf1f96d35, type: 3}
+  m_Script: {fileID: 11500000, guid: 18e167b6f44169285bf7505a18bafa95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
+  country: {fileID: 0}
 --- !u!4 &1426283686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1766633554471993198, guid: 4535dd301414a794fb0c633414563a49, type: 3}
@@ -4493,7 +4495,8 @@ MonoBehaviour:
     rgba: 4278190217
   countryFlag: {fileID: 21300000, guid: 7bd3372daf98be503825698b1dca8bcd, type: 3}
   isPlayed: 1
-  playerCountryPanel: {fileID: 0}
+  playerPanel: {fileID: 0}
+  aboutPlayer: {fileID: 0}
 --- !u!4 &1581699360
 Transform:
   m_ObjectHideFlags: 0
@@ -4526,7 +4529,7 @@ GameObject:
   - component: {fileID: 1597421543}
   - component: {fileID: 1597421542}
   m_Layer: 5
-  m_Name: Close Window
+  m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4997,7 +5000,7 @@ GameObject:
   - component: {fileID: 1697922203}
   - component: {fileID: 1697922205}
   m_Layer: 5
-  m_Name: Player Country Panel
+  m_Name: Player Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5071,7 +5074,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1697922200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a87ab84afbdd525a5bdb70a4d1c133, type: 3}
+  m_Script: {fileID: 11500000, guid: efe892ca949ad3b36aed26dac5b893e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCountry: {fileID: 0}
@@ -5172,7 +5175,7 @@ GameObject:
   - component: {fileID: 1805637988}
   - component: {fileID: 1805637987}
   m_Layer: 5
-  m_Name: Menu Name
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5615,7 +5618,8 @@ MonoBehaviour:
     rgba: 4286253824
   countryFlag: {fileID: 21300000, guid: 69f4994a4b713046eb2506dc543f2f60, type: 3}
   isPlayed: 0
-  playerCountryPanel: {fileID: 0}
+  playerPanel: {fileID: 0}
+  aboutPlayer: {fileID: 0}
 --- !u!4 &2143602769
 Transform:
   m_ObjectHideFlags: 0

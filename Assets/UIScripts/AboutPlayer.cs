@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AboutPlayerCountry : MonoBehaviour
+public class AboutPlayer : MonoBehaviour
 {   
-    public string name;
+    public new string name;
 
     public GameObject country;
 
