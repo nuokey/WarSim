@@ -6,6 +6,8 @@ public class Country : MonoBehaviour
 {
     public Color32 countryColor;
     public Sprite countryFlag;
+    public int money;
+
     public bool isPlayed;
     
 
@@ -18,7 +20,6 @@ public class Country : MonoBehaviour
             playerPanel.GetComponent<PlayerPanel>().playerCountry = gameObject;
 
             aboutPlayer = GameObject.Find("About");
-            aboutPlayer.GetComponent<AboutPlayer>().country = gameObject;
         }
     }
 }

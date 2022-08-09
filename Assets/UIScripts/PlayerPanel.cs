@@ -9,6 +9,7 @@ public class PlayerPanel : MonoBehaviour
 
     void afterStart() {
         transform.GetChild(0).GetComponent<Image>().sprite = playerCountry.GetComponent<Country>().countryFlag;
+        transform.GetChild(1).GetComponent<Text>().text = "Money: " + System.Convert.ToString(playerCountry.GetComponent<Country>().money);
     }
 
     void Start() {
