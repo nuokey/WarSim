@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Territory : MonoBehaviour
 {
-    public bool capital = false;
+    public bool capital;
+    public bool canCreateArmies;
+
+
     public int defendingArmiesCount = 0;
     public int attackingArmiesCount = 0;
 
     public Color mouseOverColor;
 
     public GameObject mouseOverObject;
+
+    public Transform armyCreate;
+    public GameObject army;
 
     void Start()
     {
@@ -48,5 +54,19 @@ public class Territory : MonoBehaviour
     private void OnMouseExit()
     {
         mouseOverObject.SetActive(false);
+    }
+
+    void OnMouseOver()
+    {   
+        
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (armyCreate.GetComponent<Create>().armyIsSpawning)
+            {
+                Instantiate(army, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation, transform.parent);
+                armyCreate.GetComponent<Create>().armyIsSpawning = false;
+            }
+        }
     }
 }
