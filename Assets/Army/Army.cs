@@ -14,12 +14,10 @@ public class Army : MonoBehaviour
     public Vector3 target;
     
     public bool targetIsChoosing = false;
-    public bool isChosen = false;
-    public GameObject descriptionPanel;
 
-    
-    public Color chosenColor;
     public Color defaultColor;
+    public Color chosenColor;
+
 
     public bool fighting;
 
@@ -27,7 +25,6 @@ public class Army : MonoBehaviour
 
     void Start()
     {
-        descriptionPanel = GameObject.Find("Army Description");
         transform.GetComponent<SpriteRenderer>().sprite = transform.parent.transform.GetComponent<Country>().countryFlag;
     }
 
@@ -99,30 +96,13 @@ public class Army : MonoBehaviour
         }
     }
 
-    void OnMouseOver()
+    private void OnMouseOver()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             targetIsChoosing = true;
             gameObject.GetComponent<SpriteRenderer>().color = chosenColor;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {   
-            if (!isChosen & !descriptionPanel.GetComponent<ArmyDescription>().armyIsChosen)
-            {
-                isChosen = true;
-                gameObject.GetComponent<SpriteRenderer>().color = chosenColor;
-                descriptionPanel.SetActive(true);
-                descriptionPanel.GetComponent<ArmyDescription>().chosenArmy = gameObject;
-                descriptionPanel.GetComponent<ArmyDescription>().showDescription();
-            }
-            else
-            {
-                isChosen = false;
-                transform.GetComponent<SpriteRenderer>().color = defaultColor;
-                descriptionPanel.GetComponent<ArmyDescription>().hideDescription();
-            }
-        }
     }
-    
+
 }
