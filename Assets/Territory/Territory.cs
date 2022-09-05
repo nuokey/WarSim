@@ -20,7 +20,7 @@ public class Territory : MonoBehaviour
 
     void Start()
     {
-        transform.GetComponent<SpriteRenderer>().color = transform.parent.transform.GetComponent<Country>().countryColor;
+        transform.GetComponent<SpriteRenderer>().color = transform.parent.parent.transform.GetComponent<Country>().countryColor;
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = transform.GetComponent<SpriteRenderer>().sprite;
     }
 
@@ -62,10 +62,10 @@ public class Territory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (armyCreate.GetComponent<Create>().armyIsSpawning)
+            if (armyCreate.GetComponent<CreateArmy>().armyIsSpawning)
             {
-                Instantiate(army, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation, transform.parent);
-                armyCreate.GetComponent<Create>().armyIsSpawning = false;
+                Instantiate(army, new Vector3(transform.position.x, transform.position.y, 0), transform.rotation, transform.parent.parent.GetChild(1).transform);
+                armyCreate.GetComponent<CreateArmy>().armyIsSpawning = false;
             }
         }
     }

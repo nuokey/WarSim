@@ -17,6 +17,5 @@ public class Add : MonoBehaviour
     {
         string count = transform.parent.GetChild(1).GetComponent<Text>().text;
         transform.parent.GetChild(1).GetComponent<Text>().text = System.Convert.ToString(System.Convert.ToInt32(count) + 1);
-        System.Convert.ToInt32(count);
     }
 }

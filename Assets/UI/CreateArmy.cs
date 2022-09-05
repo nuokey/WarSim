@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Create : MonoBehaviour
+public class CreateArmy: MonoBehaviour
 {      
     public bool armyIsSpawning;
     // Start is called before the first frame update

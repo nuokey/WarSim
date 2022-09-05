@@ -25,7 +25,7 @@ public class Army : MonoBehaviour
 
     void Start()
     {
-        transform.GetComponent<SpriteRenderer>().sprite = transform.parent.transform.GetComponent<Country>().countryFlag;
+        transform.GetComponent<SpriteRenderer>().sprite = transform.parent.parent.transform.GetComponent<Country>().countryFlag;
     }
 
     void Update()
@@ -65,10 +65,10 @@ public class Army : MonoBehaviour
         {   
             if (collision.transform.GetComponent<Territory>().defendingArmiesCount == 0)
             {
-                collision.transform.SetParent(transform.parent);
+                collision.transform.SetParent(transform.parent.parent.GetChild(0).transform);
 
                 
-                collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.GetComponent<Country>().countryColor;
+                collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.parent.GetComponent<Country>().countryColor;
                 collision.transform.GetComponent<Territory>().defendingArmiesCount = collision.transform.GetComponent<Territory>().attackingArmiesCount;
                 collision.transform.GetComponent<Territory>().attackingArmiesCount = 0;
             }       
