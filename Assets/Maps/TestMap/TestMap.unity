@@ -5944,8 +5944,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c581711492221bd4091919e7d68d6fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!114 &1579006255
 MonoBehaviour:
+=======
+  countryColor:
+    serializedVersion: 2
+    rgba: 4285559039
+  countryFlag: {fileID: 21300000, guid: 7bd3372daf98be503825698b1dca8bcd, type: 3}
+  money: 0
+  isPlayed: 1
+  playerPanel: {fileID: 0}
+  aboutPlayer: {fileID: 0}
+--- !u!4 &1581699360
+Transform:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
