@@ -59,21 +59,7 @@ public class Army : MonoBehaviour
         transform.position = transform.position + new Vector3(cosin * speed, sin * speed, 0);
 
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.transform.GetComponent<Territory>())
-        {   
-            if (collision.transform.GetComponent<Territory>().defendingArmiesCount == 0)
-            {
-                collision.transform.SetParent(transform.parent.parent.GetChild(0).transform);
-
-                
-                collision.transform.GetComponent<SpriteRenderer>().color = transform.parent.parent.GetComponent<Country>().countryColor;
-                collision.transform.GetComponent<Territory>().defendingArmiesCount = collision.transform.GetComponent<Territory>().attackingArmiesCount;
-                collision.transform.GetComponent<Territory>().attackingArmiesCount = 0;
-            }       
-        }
-    }
+    
 
     void Attack() {
         if (fighting) {
