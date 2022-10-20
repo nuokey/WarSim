@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Time : MonoBehaviour
-{   
-    public int time = 0;
-
+{
     GameObject canvas;
 
     GameObject timePanel;
     GameObject timePanelText;
 
-    string month;
-    int years;
-    int days;
+    public int defaultYear;
+    public int time = 0;
+    public string month;
+    public int years;
+    public int days;
 
     private void Start()
     {
@@ -22,70 +22,54 @@ public class Time : MonoBehaviour
 
         timePanel = canvas.transform.GetChild(3).gameObject;
         timePanelText = timePanel.transform.GetChild(0).gameObject;
+
+        Invoke("AddTime", 1);
+    }
+
+    void AddTime()
+    {
+        time += 1;
+        Invoke("AddTime", 1);
     }
 
     void ShowTime()
     {
-        years = time / 365;
+        years = time / 365 + defaultYear;
 
         days = time % 365;
 
         if (days <= 31)
         {
-            month = "January";
+            month = "01";
+            days = days;
         }
         else
         {
-            if (days <= 31)
-            {
-                month = "January";
-            }
-
-
-
-
-            
-
             if (days <= 59)
             {
-                month = "February";
+                month = "02";
+                days = days - 31;
+            }
+            else
+            {
                 if (days <= 90)
                 {
-                    month = "March";
+                    month = "03";
+                    days = days - 59;
+                }
+                else
+                {
                     if (days <= 120)
                     {
-                        month = "April";
+                        month = "04";
+                        days = days - 90;
+                    }
+                    else
+                    {
                         if (days <= 151)
                         {
-                            month = "May";
-                            if (days <= 181)
-                            {
-                                month = "June";
-                                if (days <= 212)
-                                {
-                                    month = "July";
-                                    if (days <= 243)
-                                    {
-                                        month = "August";
-                                        if (days <= 273)
-                                        {
-                                            month = "September";
-                                            if (days <= 304)
-                                            {
-                                                month = "October";
-                                                if (days <= 334)
-                                                {
-                                                    month = "November";
-                                                    if (days <= 365)
-                                                    {
-                                                        month = "December";
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            month = "05";
+                            days = days - 120;
                         }
                     }
                 }
@@ -94,13 +78,13 @@ public class Time : MonoBehaviour
 
         
 
-        timePanelText.GetComponent<Text>().text = month + "." + System.Convert.ToString(years);
+        timePanelText.GetComponent<Text>().text = System.Convert.ToString(days) + "." + month + "." + System.Convert.ToString(years);
 
     }
 
     private void FixedUpdate()
     {
-        time += 1;
+        
         ShowTime();
 
     }
