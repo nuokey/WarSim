@@ -41,7 +41,6 @@ public class Time : MonoBehaviour
         if (days <= 31)
         {
             month = "01";
-            days = days;
         }
         else
         {
@@ -70,6 +69,62 @@ public class Time : MonoBehaviour
                         {
                             month = "05";
                             days = days - 120;
+                        }
+                        else
+                        {
+                            if (days <= 182)
+                            {
+                                month = "06";
+                                days = days - 151;
+                            }
+                            else
+                            {
+                                if (days <= 212)
+                                {
+                                    month = "07";
+                                    days = days - 120;
+                                }
+                                else
+                                {
+                                    if (days <= 243)
+                                    {
+                                        month = "08";
+                                        days = days - 120;
+                                    }
+                                    else
+                                    {
+                                        if (days <= 274)
+                                        {
+                                            month = "09";
+                                            days = days - 120;
+                                        }
+                                        else
+                                        {
+                                            if (days <= 304)
+                                            {
+                                                month = "10";
+                                                days = days - 120;
+                                            }
+                                            else
+                                            {
+                                                if (days <= 334)
+                                                {
+                                                    month = "11";
+                                                    days = days - 120;
+                                                }
+                                                else
+                                                {
+                                                    if (days <= 365)
+                                                    {
+                                                        month = "12";
+                                                        days = days - 120;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

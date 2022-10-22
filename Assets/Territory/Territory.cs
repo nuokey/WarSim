@@ -43,6 +43,7 @@ public class Territory : MonoBehaviour
             transform.GetComponent<SpriteRenderer>().color = collision.transform.parent.parent.GetComponent<Country>().countryColor;
             transform.GetComponent<Territory>().defendingArmiesCount = transform.GetComponent<Territory>().attackingArmiesCount;
             transform.GetComponent<Territory>().attackingArmiesCount = 0;
+            transform.SetParent(collision.transform.parent.parent.GetChild(0));
         }
     }
 

@@ -19,9 +19,7 @@ public class Army : MonoBehaviour
     public Color chosenColor;
 
 
-    public bool fighting;
-
-    public Transform fightTarget;
+    
 
     void Start()
     {
@@ -61,26 +59,7 @@ public class Army : MonoBehaviour
     }
     
 
-    void Attack() {
-        if (fighting) {
-            fightTarget.GetComponent<Army>().durability -= transform.GetComponent<Army>().damage;
-            Invoke("Attack", transform.GetComponent<Army>().damageCoolDown);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.transform.GetComponent<Army>() & collision.transform.parent != transform.parent & !fighting) {
-            fightTarget = collision.transform;
-            fighting = true;
-            Attack();
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision) {
-        if (collision.transform == fightTarget) {
-            fighting = false;
-        }
-    }
+    
 
     private void OnMouseOver()
     {
