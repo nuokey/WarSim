@@ -9,7 +9,7 @@ public class PlayerPanel : MonoBehaviour
 
     void afterStart() {
         transform.GetChild(0).GetComponent<Image>().sprite = playerCountry.GetComponent<Country>().countryFlag;
-        transform.GetChild(2).GetComponent<Text>().text = System.Convert.ToString(playerCountry.GetComponent<Country>().money);
+        
     }
 
     void Start() {
@@ -17,6 +17,6 @@ public class PlayerPanel : MonoBehaviour
     }
     
     void Update() {
-
+        transform.GetChild(2).GetComponent<Text>().text = System.Convert.ToString(playerCountry.GetComponent<Country>().money);
     }
 }

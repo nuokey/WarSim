@@ -26,7 +26,7 @@ public class Time : MonoBehaviour
         Invoke("AddTime", 1);
     }
 
-    void AddTime()
+    public void AddTime()
     {
         time += 1;
         Invoke("AddTime", 1);
